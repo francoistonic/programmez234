@@ -1,0 +1,371 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fnil\fcharset0 Calibri-Italic;\f1\froman\fcharset0 TimesNewRomanPS-ItalicMT;\f2\froman\fcharset0 TimesNewRomanPSMT;
+\f3\froman\fcharset0 TimesNewRomanPS-BoldMT;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab708
+\pard\pardeftab708\ri-52\sl276\slmult1\qj\partightenfactor0
+
+\f0\i\fs26 \cf0 package com.ssaurel.twentyquestions;\
+\
+// Mod\'e9lisation de l'arbre de d\'e9cision pour le jeu des 20 Questions\
+public class TreeNode \{\
+\
+  // Les noeuds sont de type r\'e9ponse ou question\
+  enum Type \{\
+    ANSWER, QUESTION\
+  \}\
+\
+  public static final String QUESTION_FLAG = "Q:";\
+  public static final String ANSWER_FLAG = "A:";\
+  public String data;\
+  public Type type;\
+  // Si un noeud est de type question, il a 2 enfants : un pour le Oui et un pour le Non\
+  public TreeNode yes;\
+  public TreeNode no; \
+\
+  public TreeNode() \{\
+  \}\
+\
+  public TreeNode(String data, Type type) \{\
+    this.data = data;\
+    this.type = type;\
+  \}\
+\
+  public boolean isQuestion() \{\
+    return Type.QUESTION.equals(type);\
+  \}\
+\
+  public void setData(String data) \{\
+    type = Type.QUESTION;\
+\
+    if (data.startsWith(ANSWER_FLAG)) \{\
+      type = Type.ANSWER;\
+    \}\
+\
+    this.data = data.substring(2); // on retire le flag de la donn\'e9e stock\'e9e dans le noeud\
+  
+\f1 \}\
+\
+
+\f0   public void addYes(TreeNode yes) \{\
+    this.yes = yes;\
+  \}\
+\
+  public void addNo(TreeNode no) \{\
+    this.no = no;\
+  \}
+\f1 \
+\pard\pardeftab708\ri-52\sl276\slmult1\sa200\qj\partightenfactor0
+
+\f2\i0 \cf0 \}\
+\pard\pardeftab708\ri-52\sl276\slmult1\qj\partightenfactor0
+
+\f3\b \cf0 \
+\
+\pard\pardeftab708\ri-52\sl276\slmult1\qj\partightenfactor0
+
+\f0\i\b0 \cf0 package com.ssaurel.twentyquestions;\
+\
+import java.io.BufferedReader;\
+import java.io.File;\
+import java.io.FileReader;\
+\
+// Repr\'e9sentation de l'objet Tree pour le jeu des 20 Questions\
+public class Tree \{\
+\
+  public TreeNode root; // Racine de l'arbre\
+\
+  public Tree() \{\
+    root = new TreeNode();\
+  
+\f1 \}\
+\
+
+\f0   // M\'e9thode de chargement des donn\'e9es depuis un fichier de donn\'e9es\
+  public void loadTree(String filename) \{\
+    File file = new File(filename);\
+    FileReader fileReader = null;\
+    BufferedReader buf = null;\
+\
+    try \{\
+      fileReader = new FileReader(file);\
+      buf = new BufferedReader(fileReader);\
+      buildTree(root, buf);\
+    
+\f1 \}
+\f0  catch (Exception e) \{\
+      System.out.println("Erreur durant la construction de l'arbre : " + e.getMessage());\
+    
+\f1 \}
+\f0  finally \{\
+      try \{\
+        if (fileReader != null) \{\
+          fileReader.close();\
+        \}\
+\
+        if (buf != null) \{\
+          buf.close();\
+        \}\
+      \} catch (Exception e) \{\
+      
+\f1 \}\
+
+\f0     \}\
+  \}\
+\
+  // M\'e9thode r\'e9cursive de construction de l'arbre \
+  private void buildTree(TreeNode currentNode, BufferedReader buf) throws Exception \{\
+    String line = buf.readLine();\
+\
+    if (line != null) \{\
+      currentNode.setData(line);\
+\
+      if (currentNode.isQuestion()) \{\
+        TreeNode yesNode = new TreeNode();\
+        TreeNode noNode = new TreeNode();\
+        currentNode.yes = yesNode;\
+        currentNode.no = noNode;\
+        buildTree(yesNode, buf);\
+        buildTree(noNode, buf);\
+      
+\f1 \}\
+
+\f0     \}\
+  \}\
+\pard\pardeftab708\ri-52\sl276\slmult1\sa200\qj\partightenfactor0
+
+\f1 \cf0 \}\
+\pard\pardeftab708\ri-52\sl276\slmult1\qj\partightenfactor0
+
+\f2\i0 \cf0 \
+\
+\pard\pardeftab708\ri-52\sl276\slmult1\qj\partightenfactor0
+
+\f0\i \cf0 private void buildUI() \{\
+  // Construction de l'IHM\
+  JFrame frame = new JFrame("Jeu des 20 Questions pour Programmez!");\
+  frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\
+  Container contentPane = frame.getContentPane();\
+\
+  // Ajout des boutons
+\f1 \
+
+\f0   JPanel buttonsPanel = new JPanel();\
+\
+  yesButton = new JButton("Oui");\
+  yesButton.addActionListener(btnsListener);\
+  buttonsPanel.add(yesButton, BorderLayout.LINE_START);\
+\
+  restartButton = new JButton("D\'e9marrer");\
+  restartButton.addActionListener(btnsListener);\
+  buttonsPanel.add(restartButton, BorderLayout.LINE_START);\
+\
+  noButton = new JButton("Non");\
+  noButton.addActionListener(btnsListener);\
+  buttonsPanel.add(noButton, BorderLayout.LINE_END);\
+\
+  contentPane.add(buttonsPanel, BorderLayout.PAGE_END);\
+\
+  // Ajout de la zone de texte\
+  textPane = new JTextPane();\
+  textPane.setEditable(false);\
+  updateText("Pensez \'e0 un animal, puis cliquez sur D\'e9marrer");\
+\
+  // Customisation du rendu
+\f1 \
+
+\f0   SimpleAttributeSet bSet = new SimpleAttributeSet();\
+  StyleConstants.setAlignment(bSet, StyleConstants.ALIGN_CENTER);\
+  StyleConstants.setFontSize(bSet, 22);\
+  StyledDocument doc = textPane.getStyledDocument();\
+  doc.setParagraphAttributes(0,  doc.getLength(), bSet, false);\
+\
+  contentPane.add(textPane, BorderLayout.CENTER);\
+\
+  frame.setMinimumSize(new Dimension(500, 250));\
+\
+  // On centre la JFrame \'e0 l\'92\'e9cran\
+  Dimension objDimension = Toolkit.getDefaultToolkit().getScreenSize();\
+  int coordX = (objDimension.width - frame.getWidth()) / 2;\
+  int coordY = (objDimension.height - frame.getHeight()) / 2;\
+  frame.setLocation(coordX, coordY);\
+\
+  // Affichage de l\'92IHM
+\f1 \
+
+\f0   frame.pack();\
+  frame.setVisible(true);\
+\pard\pardeftab708\ri-52\sl276\slmult1\sa200\qj\partightenfactor0
+
+\f2\i0 \cf0 \}\
+\pard\pardeftab708\ri-52\sl276\slmult1\qj\partightenfactor0
+
+\f3\b \cf0 \
+\
+\pard\pardeftab708\ri-52\sl276\slmult1\qj\partightenfactor0
+
+\f0\i\b0 \cf0 package com.ssaurel.twentyquestions;\
+\
+import java.awt.BorderLayout;\
+import java.awt.Container;\
+import java.awt.Dimension;\
+import java.awt.Toolkit;\
+import java.awt.event.ActionEvent;\
+import java.awt.event.ActionListener;\
+\
+import javax.swing.JButton;\
+import javax.swing.JFrame;\
+import javax.swing.JPanel;\
+import javax.swing.JTextPane;\
+import javax.swing.SwingUtilities;\
+import javax.swing.text.SimpleAttributeSet;\
+import javax.swing.text.StyleConstants;\
+import javax.swing.text.StyledDocument;\
+\
+// Classe principale pour notre jeu des 20 Questions\
+public class TwentyQuestions \{\
+\
+  private Tree tree;\
+  private TreeNode currentNode;\
+  private JButton yesButton, noButton, restartButton;\
+  private JTextPane textPane;
+\f1 \
+
+\f0   private boolean started = false;\
+  private ActionListener btnsListener = new ActionListener() \{\
+\
+    @Override\
+    public void actionPerformed(ActionEvent e) \{\
+      Object source = e.getSource();\
+\
+      if (source == yesButton)\
+        yes();\
+      else if (source == noButton)\
+        no();\
+      else if (source == restartButton)\
+        restart();\
+\
+    \}\
+  \};\
+\
+  public static void main(String[] args) \{\
+    TwentyQuestions twentyQuestions = new TwentyQuestions();\
+    twentyQuestions.tree = new Tree();\
+    twentyQuestions.tree.loadTree("/Users/ssaurel/eworkspace/TwentyQuestions/animals_questions.txt");\
+\
+    SwingUtilities.invokeLater(new Runnable() \{\
+      @Override\
+      public void run() \{\
+        twentyQuestions.buildUI();\
+      \}\
+    \});\
+  \}\
+\
+  private void buildUI() \{\
+    JFrame frame = new JFrame("Jeu des 20 Questions pour Programmez!");\
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\
+    Container contentPane = frame.getContentPane();\
+\
+    // add buttons\
+    JPanel buttonsPanel = new JPanel();\
+\
+    yesButton = new JButton("Oui");\
+    yesButton.addActionListener(btnsListener);\
+    buttonsPanel.add(yesButton, BorderLayout.LINE_START);\
+\
+    restartButton = new JButton("D\'e9marrer");\
+    restartButton.addActionListener(btnsListener);\
+    buttonsPanel.add(restartButton, BorderLayout.LINE_START);\
+\
+    noButton = new JButton("Non");\
+    noButton.addActionListener(btnsListener);\
+    buttonsPanel.add(noButton, BorderLayout.LINE_END);\
+\
+    contentPane.add(buttonsPanel, BorderLayout.PAGE_END);\
+\
+    textPane = new JTextPane();\
+    textPane.setEditable(false);\
+    updateText("Pensez \'e0 un animal, puis cliquez sur D\'e9marrer");\
+\
+    SimpleAttributeSet bSet = new SimpleAttributeSet();\
+    StyleConstants.setAlignment(bSet, StyleConstants.ALIGN_CENTER);\
+    StyleConstants.setFontSize(bSet, 22);\
+    StyledDocument doc = textPane.getStyledDocument();\
+    doc.setParagraphAttributes(0,  doc.getLength(), bSet, false);\
+\
+    contentPane.add(textPane, BorderLayout.CENTER);\
+\
+    frame.setMinimumSize(new Dimension(500, 250));\
+\
+    Dimension objDimension = Toolkit.getDefaultToolkit().getScreenSize();\
+    int coordX = (objDimension.width - frame.getWidth()) / 2;\
+    int coordY = (objDimension.height - frame.getHeight()) / 2;\
+    frame.setLocation(coordX, coordY);\
+\
+    frame.pack();\
+    frame.setVisible(true);\
+  \}\
+\
+  private void yes() \{\
+    // On suit la branche Oui dans notre arbre de d\'e9cision\
+    if (started && currentNode != null) \{\
+      currentNode = currentNode.yes;\
+\
+      if (currentNode != null) \{\
+        if (currentNode.isQuestion()) \{\
+          updateText(currentNode.data);\
+        \} else \{\
+          updateText("Pensez-vous \'e0 " + currentNode.data + " ?");\
+        
+\f1 \}\
+
+\f0       \} else \{\
+          updateText("J\'92ai trouv\'e9 !");\
+      \}\
+    \}\
+  \}\
+\
+  private void no() \{\
+    // On suit la branche Non dans notre arbre de d\'e9cision\
+    if (started && currentNode != null) \{\
+      currentNode = currentNode.no;\
+\
+      if (currentNode != null) \{\
+        if (currentNode.isQuestion()) \{\
+          updateText(currentNode.data);\
+        \} else \{\
+          updateText("Pensez-vous \'e0 " + currentNode.data + " ?");\
+        
+\f1 \}\
+
+\f0       \} else \{\
+        updateText("J\'92ai perdu !");\
+     \}\
+    \}\
+  \}\
+\
+  private void restart() \{\
+    if (started) \{\
+      started = false;\
+      updateText("Pensez \'e0 un animal, puis cliquez sur D\'e9marrer");\
+    
+\f1 \}
+\f0  else \{\
+      started = true;\
+      updateText("Pensez \'e0 un animal, puis cliquez sur D\'e9marrer");\
+      currentNode = tree.root;\
+      updateText(currentNode.data);\
+    \}\
+  \}\
+\
+  private void updateText(String txt) \{\
+    textPane.setText("\\n" + txt);\
+  \}
+\f1 \
+\pard\pardeftab708\ri-52\sl276\slmult1\sa200\qj\partightenfactor0
+\cf0 \}\
+\pard\pardeftab708\ri-52\sl276\slmult1\sa200\partightenfactor0
+\cf0 \
+}

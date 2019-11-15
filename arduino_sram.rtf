@@ -1,0 +1,486 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\froman\fcharset0 TimesNewRomanPSMT;\f2\fswiss\fcharset0 Helvetica;
+}
+{\colortbl;\red255\green255\blue255;\red212\green39\blue134;\red172\green122\blue254;\red0\green134\blue255;
+\red143\green185\blue203;\red181\green50\blue26;\red164\green122\blue75;\red95\green185\blue65;}
+{\*\expandedcolortbl;;\csgenericrgb\c83137\c15294\c52549;\csgenericrgb\c67451\c47843\c99608;\csgenericrgb\c0\c52549\c100000;
+\csgenericrgb\c56078\c72549\c79608;\csgenericrgb\c70980\c19608\c10196;\csgenericrgb\c64314\c47843\c29412;\csgenericrgb\c37255\c72549\c25490;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab708
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0\fs20 \cf2 void\cf0  setup()
+\f1 \
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf0 \{
+\f1 \
+
+\f0     Serial.\cf3 begin\cf0 (
+\f2 \cf4 9600
+\f0 \cf0 );
+\f1 \
+
+\f0 \}
+\f1 \
+\
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf2 void\cf0  loop()
+\f1 \
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf0 \{
+\f1 \
+
+\f0     \cf2 int\cf0  x = \cf4 0\cf0 ,\cf4  \cf0 y\cf4  \cf0 =\cf4  0\cf0 ,\cf4  \cf0 z\cf4  \cf0 =\cf4  0\cf0 ;
+\f1 \
+
+\f0     
+\f1 \
+
+\f0     \cf5 uint16_t\cf0  varAddress1 = (\cf5 uint16_t\cf0 )&x;
+\f1 \
+
+\f0     \cf5 uint16_t\cf0  varAddress2 = (\cf5 uint16_t\cf0 )&y;
+\f1 \
+
+\f0     \cf5 uint16_t\cf0  varAddress3 = (\cf5 uint16_t\cf0 )&z;
+\f1 \
+
+\f0     
+\f1 \
+
+\f0     Serial.\cf3 println\cf0 (\cf6 "Addr1: Ox" \cf0 +\cf6  \cf5 String\cf0 (varAddress1, \cf7 HEX\cf0 ));
+\f1 \
+
+\f0     Serial.\cf3 println\cf0 (\cf6 "Addr2: Ox"\cf0  + \cf5 String\cf0 (varAddress2, \cf7 HEX\cf0 ));
+\f1 \
+
+\f0     Serial.\cf3 println\cf0 (\cf6 "Addr3: Ox"\cf0  + \cf5 String\cf0 (varAddress3, \cf7 HEX\cf0 ));
+\f1 \
+
+\f0     
+\f1 \
+
+\f0     \cf8 // Valeur fin de RAM:
+\f1 \
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf8     \cf0 Serial.\cf3 println\cf0 (\cf6 "RAMEND: Ox"\cf8  \cf0 +\cf8  \cf5 String\cf0 (\cf7 RAMEND\cf0 ,\cf8  \cf7 HEX\cf0 ));
+\f1 \
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf0     
+\f1 \
+
+\f0     delay(\cf4 10000\cf0 );
+\f1 \
+\pard\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf0 \}\
+\
+\
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+\cf8 // void setup() \'e9lud\'e9e\'85
+\f1 \
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf2 void\cf0  loop()
+\f1 \
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf0 \{
+\f1 \
+
+\f0     \cf5 uint8_t\cf0 * buffer1 = (\cf5 uint8_t\cf0 *)malloc(\cf4 10\cf0 );
+\f1 \
+
+\f0     \cf5 uint8_t\cf0 * buffer2 = (\cf5 uint8_t\cf0 *)malloc(\cf4 10\cf0 ); 
+\f1 \
+
+\f0     
+\f1 \
+
+\f0     Serial.\cf3 println\cf0 (\cf6 "Addr1: Ox"\cf0  + \cf5 String\cf0 ((\cf5 uint16_t\cf0 )buffer1,\cf7  HEX\cf0 ));
+\f1 \
+
+\f0     Serial.\cf3 println\cf0 (\cf6 "Addr2: Ox"\cf0  + \cf5 String\cf0 ((\cf5 uint16_t\cf0 )buffer2, \cf7 HEX\cf0 ));
+\f1 \
+
+\f0     
+\f1 \
+
+\f0     free(buffer1);
+\f1 \
+
+\f0     free(buffer2);
+\f1 \
+
+\f0     
+\f1 \
+
+\f0     delay(\cf4 10000\cf0 );
+\f1 \
+\pard\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf0 \}\
+\
+\
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+\cf2 void\cf0  PrintVariable(\cf5 uint16_t\cf0  address, \cf2 int\cf0  len)
+\f1 \
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf0 \{
+\f1 \
+
+\f0     \cf8 // On place un pointeur \'e0 l'adresse:
+\f1 \cf0 \
+
+\f0     \cf5 uint8_t\cf0 * pointer = (\cf5 uint8_t\cf0 *)address; 
+\f1 \
+
+\f0     
+\f1 \
+
+\f0     Serial.\cf3 print\cf0 (\cf6 "Ox"\cf0 );	\cf8 // On commence l'\'e9criture.
+\f1 \cf0 \
+
+\f0     \cf2 for\cf0  (\cf2 int\cf0  i = \cf4 0\cf0  ; i < len ; i++)
+\f1 \
+
+\f0     \{
+\f1 \
+
+\f0         \cf5 uint8_t\cf0  val = *(pointer+i); \cf8 // valeur d'1 octet.
+\f1 \cf0 \
+
+\f0         Serial.\cf3 print\cf0 ((val < \cf4 16\cf0  ? \cf6 "0"\cf0  : \cf6 ""\cf0 ) + \cf5 String\cf0 (val, \cf7 HEX\cf0 ));
+\f1 \
+
+\f0     \} 
+\f1 \
+
+\f0     Serial.\cf3 println\cf0 (\cf6 ""\cf0 ); \cf8 // CRLF
+\f1 \cf0 \
+\
+\pard\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf0 \}\
+\
+\
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+\cf2 void\cf0  loop()
+\f1 \
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf0 \{
+\f1 \
+
+\f0    \cf2 long\cf8  \cf0 maVar =\cf8  \cf4 32\cf8 ;
+\f1 \
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf8    // Obtention de l'adresse avec '&'
+\f1 \
+
+\f0    // et de la taille avec sizeof():
+\f1 \
+
+\f0    \cf0 PrintVariable(
+\f2 (\cf5 uint16_t\cf0 )&maVar
+\f0 , 
+\f2 \cf2 sizeof\cf0 (maVar)
+\f0 );
+\f1 \
+\
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf0    delay(\cf4 10000\cf0 );
+\f1 \
+\pard\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf0 \}\
+\
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+\cf2 void\cf7  \cf0 loop()
+\f1 \cf7 \
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf0 \{
+\f1 \cf7 \
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf7     \cf5 byte\cf2  \cf0 tableau[] = \{\cf4 0\cf0 , \cf4 1\cf0 , \cf4 2\cf0 , \cf4 3\cf0 , \cf4 4\cf0 , \cf4 5\cf0 , \cf4 6\cf0 ,\cf4  7\cf0 ,\cf4  8\cf0 ,\cf4  9\cf0 \};
+\f1 \cf7 \
+
+\f0 \cf7     \cf0 PrintVariable((\cf5 uint16_t\cf0 )&tableau,\cf2  sizeof\cf0 (tableau));
+\f1 \cf7 \
+\
+
+\f0 \cf7     \cf0 delay(\cf4 10000\cf0 );
+\f1 \cf7 \
+\pard\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf0 \}\
+\
+\
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+\cf2 void\cf7  \cf0 loop()
+\f1 \cf7 \
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf0 \{
+\f1 \
+
+\f0     \cf8 // On cr\'e9e un buffer:
+\f1 \cf7 \
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf7     \cf5 uint8_t\cf0 *\cf5  \cf0 buffer = (\cf5 uint8_t\cf0 *)malloc(\cf4 10\cf0 );
+\f1 \
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf0     \cf8 // On initialise tous les octets \'e0 0xa0:
+\f1 \cf0 \
+
+\f0     memset(buffer, \cf4 0xa0\cf0 , \cf4 10\cf0 );
+\f1 \
+
+\f0     
+\f1 \
+
+\f0     \cf8 // Imaginons maintenant qu'on ne
+\f1 \
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf8     // connaisse pas la taille du buffer:
+\f1 \
+
+\f0     
+\f1 \
+
+\f0     // Adresse du buffer dans le tas:
+\f1 \
+
+\f0     \cf5 uint16_t\cf8  \cf0 address = (\cf5 uint16_t\cf0 )buffer;
+\f1 \
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf0     
+\f1 \
+
+\f0     \cf5 uint8_t\cf0 * pointer = (\cf5 uint8_t\cf0 *)(address - \cf4 2\cf0 );
+\f1 \
+
+\f0     
+\f1 \
+
+\f0     \cf8 // Taille:
+\f1 \cf0 \
+
+\f0     \cf5 uint16_t\cf0  len = \cf4 0\cf0 ;
+\f1 \
+
+\f0     \cf8 // On copie la valeur \'e0 l'adresse -2 dans len:
+\f1 \cf0 \
+
+\f0     memcpy(&len, pointer, \cf2 sizeof\cf0 (\cf5 uint16_t\cf0 ));
+\f1 \
+
+\f0     
+\f1 \cf7 \
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf7     \cf0 pointer\cf8  \cf0 +=\cf8  \cf4 2\cf0 ;
+\f1 \cf8 \
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf8     \cf0 PrintVariable((\cf5 uint16_t\cf0 )pointer,\cf8  \cf0 len);
+\f1 \
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf0     
+\f1 \
+
+\f0     free(buffer);	\cf8 // On lib\'e8re !
+\f1 \cf7 \
+\
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf7     \cf0 delay(\cf4 10000\cf0 );
+\f1 \cf7 \
+\pard\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf0 \}\
+\
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+\cf8 // Ecrit les taille de chaque section:
+\f1 \cf2 \
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf2 void\cf0  PrintMemusage()
+\f1 \
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf0 \{
+\f1 \
+
+\f0     \cf2 extern\cf0  \cf2 char\cf0 * __data_start;
+\f1 \
+
+\f0     \cf2 extern\cf0  \cf2 char\cf0 * __data_end;
+\f1 \
+
+\f0     \cf2 extern\cf0  \cf2 char\cf0 * __bss_start;
+\f1 \
+
+\f0     \cf2 extern\cf0  \cf2 char\cf0 * __bss_end;
+\f1 \
+
+\f0     \cf2 extern\cf0  \cf2 char\cf0 * __heap_start;
+\f1 \
+
+\f0     \cf8 // prochaine allocation du tas disponible:
+\f1 \cf0 \
+
+\f0     \cf2 extern\cf0  \cf2 char\cf0 * __brkval;
+\f1 \
+
+\f0     
+\f1 \
+
+\f0     \cf5 uint16_t\cf0  memReg = (\cf5 uint16_t\cf0 )&__data_start;
+\f1 \
+
+\f0     \cf5 uint16_t\cf0  memData = (\cf5 uint16_t\cf0 )&__data_end - (\cf5 uint16_t\cf0 )&__data_start;
+\f1 \
+
+\f0     \cf5 uint16_t\cf0  memBss = (\cf5 uint16_t\cf0 )&__bss_end - (\cf5 uint16_t\cf0 )&__bss_start;
+\f1 \
+
+\f0     \cf5 uint16_t\cf0  memHeapTtl = ((\cf5 uint16_t\cf0 )__brkval == \cf4 0\cf0 ) ?  \cf4 0\cf0  : (__brkval - __malloc_heap_start);
+\f1 \
+
+\f0         
+\f1 \
+
+\f0     \cf5 uint16_t\cf0  memStack = \cf7 RAMEND\cf0  - \cf7 SP\cf0 ; \cf8 // SP = pointeur de pile.
+\f1 \cf0 \
+
+\f0     \cf5 uint16_t\cf0  freeRam = \cf7 SP\cf0  - ((\cf2 int\cf0 )&__heap_start + memHeapTtl);
+\f1 \
+
+\f0     
+\f1 \
+
+\f0     Serial.\cf3 println\cf0 (\cf6 "Registres: " \cf0 +\cf6  \cf5 String\cf0 (memReg) + \cf6 " octets"\cf0 );
+\f1 \
+
+\f0     Serial.\cf3 println\cf0 (\cf6 ".Data: "\cf0  + \cf5 String\cf0 (memData) + \cf6 " octets"\cf0 );
+\f1 \
+
+\f0     Serial.\cf3 println\cf0 (\cf6 ".Bss: "\cf0  + \cf5 String\cf0 (memBss) + \cf6 " octets"\cf0 );
+\f1 \
+
+\f0     Serial.\cf3 println\cf0 (\cf6 "Tas1: "\cf0  + \cf5 String\cf0 (memHeapTtl) + \cf6 " octets"\cf0 );
+\f1 \
+
+\f0     Serial.\cf3 println\cf0 (\cf6 "Pile: "\cf0  + \cf5 String\cf0 (memStack) + \cf6 " octets"\cf0 );
+\f1 \
+
+\f0     Serial.\cf3 println\cf0 (\cf6 "Libre: "\cf0  + \cf5 String\cf0 (freeRam) + \cf6 " octets"\cf0 );
+\f1 \
+\pard\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf0 \}\
+\
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+\cf2 void\cf0  loop()
+\f1 \
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf0 \{
+\f1 \
+
+\f0     \cf5 uint8_t\cf0 * buff1 = (\cf5 uint8_t\cf0 *)malloc(\cf4 10\cf0 );
+\f1 \
+
+\f0     \cf5 uint8_t\cf0 * buff2 = (\cf5 uint8_t\cf0 *)malloc(\cf4 20\cf0 );
+\f1 \
+
+\f0                 
+\f1 \
+
+\f0     PrintMemusage();
+\f1 \
+
+\f0         
+\f1 \
+
+\f0     free(buff2);
+\f1 \cf8 	
+\f0 // Lib\'e9r\'e9e !
+\f1 \cf0 \
+
+\f0     free(buff1);\cf8   // D\'e9livr\'e9e !
+\f1 \cf0 \
+
+\f0         
+\f1 \
+
+\f0     delay(\cf4 10000\cf0 );
+\f1 \
+\pard\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf0 \}\
+\
+\
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+\cf2 void\cf0  loop()
+\f1 \
+\pard\tx520\tx1040\tx1560\tx2080\tx2600\tx3120\tx3640\tx4160\tx4680\tx5200\tx5720\tx6240\tx6760\tx7280\tx7800\tx8320\tx8840\tx9132\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf0 \{
+\f1 \
+
+\f0     \cf5 uint8_t\cf0 * buff1 = (\cf5 uint8_t\cf0 *)malloc(\cf4 10\cf0 );
+\f1 \
+
+\f0     \cf5 uint8_t\cf0 * buff2 = (\cf5 uint8_t\cf0 *)malloc(\cf4 20\cf0 );
+\f1 \
+
+\f0                 
+\f1 \
+
+\f0     PrintMemusage();
+\f1 \
+
+\f0         
+\f1 \
+
+\f0     memset(buff1,\cf8  \cf4 0xe4\cf0 ,\cf8  \cf4 10\cf0 );
+\f1 \
+
+\f0     memset(buff2, \cf4 0xe4\cf0 , \cf4 20\cf0 );
+\f1 \
+
+\f0         
+\f1 \
+
+\f0     free(buff2);
+\f1 \cf8 	
+\f0 // Lib\'e9r\'e9e !
+\f1 \cf0 \
+
+\f0     free(buff1);\cf8   // D\'e9livr\'e9e !
+\f1 \cf0 \
+
+\f0     delay(\cf4 10000\cf0 );   
+\f1 \
+\pard\pardeftab708\ri-386\partightenfactor0
+
+\f0 \cf0 \}\
+\
+}
